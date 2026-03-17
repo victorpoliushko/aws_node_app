@@ -11,3 +11,4 @@ dist/
 .aws/
 .aws-sam/
 aws-sdk-js-codemod.report.dat
+docker-compose.override.yml
