@@ -3,6 +3,7 @@ import express, { Request, Response } from 'express';
 import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
 import { SNSClient, PublishCommand } from "@aws-sdk/client-sns";
 import * as dotenv from 'dotenv';
+import pool from './db';
 
 dotenv.config();
 
@@ -42,6 +43,18 @@ app.post('/publish', async (req: Request, res: Response) => {
   try {
     const data = await snsClient.send(command);
     res.json({ success: true, messageId: data.MessageId });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/db-test', async (req: Request, res: Response) => {
+  try {
+    const result = await pool.query('SELECT NOW() as current_time');
+    res.json({ 
+      success: true, 
+      dbTime: result.rows[0].current_time 
+    });
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }

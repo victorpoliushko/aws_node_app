@@ -12,12 +12,14 @@
     "@aws-sdk/client-sns": "^3.1009.0",
     "@aws-sdk/client-sqs": "^3.1009.0",
     "dotenv": "^17.3.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.161",
     "@types/express": "^5.0.6",
     "@types/node": "^25.5.0",
+    "@types/pg": "^8.18.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
