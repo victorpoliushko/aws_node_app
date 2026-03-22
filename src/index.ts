@@ -20,6 +20,10 @@ app.get('/', (req: Request, res: Response) => {
   res.status(200).send('(-_-) Hello?');
 });
 
+app.get('/test', (req: Request, res: Response) => (
+  res.json({ message: 'hello!'})
+))
+
 app.post('/queue', async (req: Request, res: Response) => {
   const command = new SendMessageCommand({
     QueueUrl: process.env.SQS_QUEUE_URL,
